@@ -480,7 +480,7 @@ export const mockAnalytics = {
     { country: 'Canada', attendees: 234, percentage: 12.7 },
     { country: 'United Kingdom', attendees: 156, percentage: 8.4 },
     { country: 'Germany', attendees: 89, percentage: 4.8 },
-    { country: 'Australia', value: 67, percentage: 3.6 },
+    { country: 'Australia', attendees: 67, percentage: 3.6 },
     { country: 'Others', attendees: 54, percentage: 2.9 },
   ]
 };

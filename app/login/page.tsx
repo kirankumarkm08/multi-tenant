@@ -1,8 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import { useAuth } from '@/lib/contexts/auth-context';
-import { useTenant } from '@/lib/contexts/tenant-context';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -18,8 +16,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const { login } = useAuth();
-  const { tenant } = useTenant();
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -28,8 +24,13 @@ export default function LoginPage() {
     setError('');
 
     try {
-      await login(email, password);
-      router.push('/admin');
+      // Mock login - in real app, this would call the API
+      if (email === 'admin@rareevo.io' && password === 'password') {
+        localStorage.setItem('isLoggedIn', 'true');
+        router.push('/admin');
+      } else {
+        setError('Invalid email or password');
+      }
     } catch (err) {
       setError('Invalid email or password');
     } finally {
@@ -41,19 +42,11 @@ export default function LoginPage() {
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
-          {tenant?.logo ? (
-            <img
-              src={tenant.logo}
-              alt={tenant.name}
-              className="mx-auto h-12 w-auto"
-            />
-          ) : (
-            <div className="mx-auto h-12 w-32 bg-gradient-to-r from-blue-600 to-blue-800 rounded flex items-center justify-center">
-              <span className="text-white font-bold">
-                {tenant?.name || 'EventFlow'}
-              </span>
-            </div>
-          )}
+          <div className="mx-auto h-12 w-32 bg-gradient-to-r from-blue-600 to-blue-800 rounded flex items-center justify-center">
+            <span className="text-white font-bold">
+              EventFlow
+            </span>
+          </div>
           <h2 className="mt-6 text-3xl font-bold text-gray-900">
             Sign in to your account
           </h2>

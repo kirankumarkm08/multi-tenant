@@ -1,13 +1,10 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { useTenant } from '@/lib/contexts/tenant-context';
 import { Calendar, MapPin, Users } from 'lucide-react';
 import Link from 'next/link';
 
 export function HeroSection() {
-  const { tenant } = useTenant();
-
   return (
     <section className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 lg:py-32">
       <div className="absolute inset-0 bg-grid-gray-100 opacity-50"></div>
@@ -20,7 +17,7 @@ export function HeroSection() {
             </div>
             
             <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              {tenant?.name || 'RareEvo Conference'}
+              RareEvo Conference
               <span className="text-blue-600 block">2025</span>
             </h1>
             

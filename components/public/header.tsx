@@ -1,13 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { useTenant } from '@/lib/contexts/tenant-context';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
 export function Header() {
-  const { tenant } = useTenant();
   const [isOpen, setIsOpen] = useState(false);
 
   const navigation = [
@@ -24,19 +22,11 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
-            {tenant?.logo ? (
-              <img
-                src={tenant.logo}
-                alt={tenant.name}
-                className="h-10 w-auto"
-              />
-            ) : (
-              <div className="h-10 w-32 bg-gradient-to-r from-blue-600 to-blue-800 rounded flex items-center justify-center">
-                <span className="text-white font-bold text-sm">
-                  {tenant?.name || 'EventFlow'}
-                </span>
-              </div>
-            )}
+            <div className="h-10 w-32 bg-gradient-to-r from-blue-600 to-blue-800 rounded flex items-center justify-center">
+              <span className="text-white font-bold text-sm">
+                EventFlow
+              </span>
+            </div>
           </div>
 
           {/* Desktop Navigation */}

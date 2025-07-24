@@ -146,7 +146,11 @@ export function PagePreview({ components }: PagePreviewProps) {
             key={component.id} 
             className={getStyleClasses(component.props)}
             style={getInlineStyles(component.props)}
-          >
+                    <div className={`grid grid-cols-1 ${
+                      component.props.columns === 2 ? 'md:grid-cols-2' :
+                      component.props.columns === 4 ? 'md:grid-cols-4' :
+                      'md:grid-cols-3'
+                    } gap-8`}>
             <div className="max-w-6xl mx-auto px-6">
               <h2 className="text-3xl font-bold text-center mb-12">
                 {component.props.title || 'Features'}
@@ -179,7 +183,11 @@ export function PagePreview({ components }: PagePreviewProps) {
                 <p className="text-gray-600">This component will be rendered here</p>
               </div>
             </div>
-          </section>
+                    <div className={`grid grid-cols-1 ${
+                      component.props.columns === 2 ? 'md:grid-cols-2' :
+                      component.props.columns === 4 ? 'md:grid-cols-4' :
+                      'md:grid-cols-3'
+                    } gap-8`}>
         );
     }
   };

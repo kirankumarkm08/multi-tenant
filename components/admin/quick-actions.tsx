@@ -69,8 +69,22 @@ export function QuickActions() {
               >
                 <Link href={action.href}>
                   <div className="flex items-center space-x-3">
-                    <div className={`w-10 h-10 bg-${action.color}-100 rounded-lg flex items-center justify-center`}>
-                      <Icon className={`text-${action.color}-600`} size={20} />
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                      action.color === 'blue' ? 'bg-blue-100' :
+                      action.color === 'green' ? 'bg-green-100' :
+                      action.color === 'purple' ? 'bg-purple-100' :
+                      action.color === 'orange' ? 'bg-orange-100' :
+                      action.color === 'pink' ? 'bg-pink-100' :
+                      'bg-gray-100'
+                    }`}>
+                      <Icon className={`${
+                        action.color === 'blue' ? 'text-blue-600' :
+                        action.color === 'green' ? 'text-green-600' :
+                        action.color === 'purple' ? 'text-purple-600' :
+                        action.color === 'orange' ? 'text-orange-600' :
+                        action.color === 'pink' ? 'text-pink-600' :
+                        'text-gray-600'
+                      }`} size={20} />
                     </div>
                     <div className="text-left">
                       <div className="font-medium">{action.title}</div>
